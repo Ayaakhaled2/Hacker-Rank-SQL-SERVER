@@ -98,3 +98,33 @@ SELECT DISTINCT CITY FROM STATION
 WHERE CITY NOT LIKE '[aeiou]%' OR CITY NOT LIKE '%[aeiou]'
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
+Weather Observation Station 12
+
+
+
+SELECT DISTINCT CITY FROM STATION 
+WHERE CITY NOT LIKE '[aeiou]%'
+AND CITY NOT LIKE '%[aeiou]'
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Higher Than 75 Marks
+
+SELECT name 
+FROM STUDENTS 
+WHERE MARKS > 75 
+ORDER BY RIGHT(name,3) , id asc 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Employee Names
+
+
+SELECT NAME FROM Employee  
+ORDER BY name ASC 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Employee Salaries
+
+
+SELECT name FROM Employee 
+WHERE SALARY > 2000
+AND MONTHS < 10
+ORDER BY employee_id ASC 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
