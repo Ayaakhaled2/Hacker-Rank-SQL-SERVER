@@ -1,0 +1,52 @@
+Revising Aggregations - The Count Function
+
+
+SELECT COUNT(ID)
+FROM CITY 
+WHERE Population > 100000
+
+------------------------------------------------------------------------------------------------------
+Revising Aggregations - The Sum Function
+
+SELECT SUM(population)
+FROM CITY 
+WHERE District = 'California'
+------------------------------------------------------------------------------------------------------
+Revising Aggregations - Averages
+
+
+SELECT AVG(population) FROM CITY 
+WHERE District = 'California'
+
+------------------------------------------------------------------------------------------------------
+Average Population
+
+
+SELECT floor(AVG(population))
+FROM CITY 
+------------------------------------------------------------------------------------------------------
+Japan Population
+
+
+SELECT SUM(population)
+FROM CITY 
+WHERE COUNTRYCODE = 'JPN'
+------------------------------------------------------------------------------------------------------
+Population Density Difference
+
+
+SELECT MAX(population) - MIN(population) AS difference
+FROM CITY 
+------------------------------------------------------------------------------------------------------
+Weather Observation Station 2
+
+SELECT CAST(ROUND(SUM(LAT_N),2) AS DECIMAL(7,2)) AS lat,
+CAST(ROUND(SUM(LONG_W),2) AS DECIMAL(7,2)) AS lon
+FROM STATION
+------------------------------------------------------------------------------------------------------
+Weather Observation Station 14
+
+
+
+
+                
