@@ -1,0 +1,31 @@
+Asian Population
+
+SELECT SUM(C1.population) 
+FROM CITY C1
+JOIN COUNTRY C2
+ON C1.CountryCode = C2.Code
+WHERE CONTINENT = 'Asia'
+
+
+
+-------------------------------------------------------
+
+African Cities
+
+
+SELECT c.name 
+FROM CITY AS c
+JOIN COUNTRY
+ON c.CountryCode = COUNTRY.Code 
+WHERE CONTINENT = 'Africa'
+
+-------------------------------------------------------
+Average Population of Each Continent
+
+
+SELECT C2.continent , floor(AVG(C1.population))
+FROM CITY AS C1
+JOIN COUNTRY AS C2 
+ON C1.CountryCode = C2.Code
+GROUP BY C2.continent
+-------------------------------------------------------
