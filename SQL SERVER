@@ -1,0 +1,13 @@
+Q1) Top Earners
+
+LINK : https://www.hackerrank.com/challenges/earnings-of-employees/problem
+
+Solution 
+
+WITH CTE AS 
+( SELECT months * salary AS total_earn , dense_rank() OVER(ORDER BY months * salary DESC) AS rank FROM Employee ) 
+
+SELECT total_earn , COUNT(*)
+FROM CTE
+WHERE rank = 1 
+GROUP BY total_earn
