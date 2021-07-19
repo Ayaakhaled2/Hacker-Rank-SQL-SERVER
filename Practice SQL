@@ -1,0 +1,58 @@
+#Weather Observation Station 19
+
+
+WITH POINTS AS 
+(SELECT MIN(LAT_N) AS a , MAX(LAT_N) AS b , 
+MIN(LONG_W) AS c , MAX(LONG_W) AS d 
+FROM STATION)
+SELECT CAST(SQRT(SQUARE(b - a) + SQUARE(d - c)) AS decimal(7,4)) AS d FROM POINTS
+------------------------------------------------------------------------------------------------------------------
+
+#Weather Observation Station 20
+
+WITH CTE AS 
+( SELECT
+(
+ (SELECT MAX(LAT_N) FROM
+   (SELECT TOP 50 PERCENT LAT_N FROM STATION ORDER BY LAT_N) AS BottomHalf)
+ +
+ (SELECT MIN(LAT_N) FROM
+   (SELECT TOP 50 PERCENT LAT_N FROM STATION ORDER BY LAT_N DESC) AS TopHalf)
+) / 2 AS Median ) 
+
+SELECT CAST(Median AS DECIMAL(6,4)) FROM CTE
+
+------------------------------------------------------------------------------------------------------------------
+#Weather Observation Station 5
+
+SELECT TOP 1 CITY , LEN(CITY)
+FROM STATION 
+ORDER BY LEN(CITY) ASC , CITY ASC;
+
+SELECT TOP 1 CITY , LEN(CITY)
+FROM STATION 
+ORDER BY LEN(CITY) DESC , CITY ASC
+
+------------------------------------------------------------------------------------------------------------------
+Draw The Triangle 2
+
+
+
+DECLARE @i INT = 1
+WHILE (@i < 21) 
+BEGIN
+   PRINT REPLICATE('* ', @i) 
+   SET @i = @i + 1
+END
+
+------------------------------------------------------------------------------------------------------------------
+
+#The Report
+
+
+SELECT CASE WHEN GRADE >= 8 THEN NAME 
+            WHEN GRADE BETWEEN 1 AND 7 THEN NULL 
+            END AS NAMES, GRADE, MARKS
+FROM STUDENTS , GRADES
+WHERE MARKS BETWEEN MIN_MARK AND MAX_MARK
+ORDER BY GRADE DESC, NAME
